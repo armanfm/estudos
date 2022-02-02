@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sistema Acolher</title>
+
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width,
+     user-scalable=no" />
+
+<link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+
+
+
+
+
+</head>
+
+
+<style>
+body {
+	margin-left: 35px;
+}
+</style>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+       	<h4>Lista de Serviços</h4>
+    </div>
+
+
+	<div th:if="${mensagem != null}">
+		<div class="alert alert-info" role="alert">
+			<span th:text="${mensagem}">mensagem</span>
+		</div>
+	</div>
+
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+
+					<th>Login</th>
+
+
+				</tr>
+			</thead>
+			<tr>
+			<tr th:each="servico : ${servicos}">
+				<td><a th:text="${servico.idServico}" th:href="@{/servicos/{id}/salas/listar(id=${servico.idServico})}">id</a></td>
+
+
+				<td><a class="btn btn-sm btn-info"
+					th:href="@{/servicos/{id}/atualizar(id=${servico.idServico})}">Editar</a>
+					<a class="btn btn-sm btn-danger"
+					th:href="@{/servicos/{id}/remover(id=${servico.idServico})}">Excluir</a>
+					
+				</td>
+			</tr>
+
+
+		</table>
+
+	</div>
+	<a class="btn btn-success" href="/servicos/cadastrar">Cadastrar</a>
+	
+</div>
+</body>
+</html>

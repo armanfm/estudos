@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sistema Acolher</title>
+
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width,
+     user-scalable=no" />
+
+<link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+
+
+
+
+
+</head>
+
+
+<style>
+body {
+	margin-left: 35px;
+}
+</style>
+<body>
+
+	<h4>Lista de Usuários</h4>
+
+	<div th:if="${mensagem != null}">
+		<div class="alert alert-info" role="alert">
+			<span th:text="${mensagem}">mensagem</span>
+		</div>
+	</div>
+
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+
+					<th>Número</th>
+					<th>status</th>
+
+				</tr>
+			</thead>
+			<tr>
+			<tr th:each="sala : ${salas}">
+				<td><a th:text="${sala.numero}">id</a></td>
+				<td><a th:text="${sala.status}">id</a></td>
+
+				<td><a class="btn btn-sm btn-info"
+					th:href="@{/salas/{id}/atualizar(id=${sala.idSala})}">Editar</a> <a
+					class="btn btn-sm btn-danger"
+					th:href="@{/salas/{id}/remover(id=${sala.idSala})}">Excluir</a></td>
+			</tr>
+
+
+		</table>
+
+	</div>
+	<a class="btn btn-success" th:href="@{/servicos/{servicoId}/salas/cadastrar(servicoId=${servicoId})}">Adicionar</a>
+</body>
+</html>

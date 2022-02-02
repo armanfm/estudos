@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sistema Acolher</title>
+
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width,
+     user-scalable=no" />
+
+<link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+
+
+
+
+
+</head>
+
+
+<style>
+body {
+	margin-left: 35px;
+}
+</style>
+<body>
+
+	<h4>Lista de Usuários</h4>
+
+	<div th:if="${mensagem != null}">
+		<div class="alert alert-info" role="alert">
+			<span th:text="${mensagem}">mensagem</span>
+		</div>
+	</div>
+
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+
+					<th>Login</th>
+
+
+				</tr>
+			</thead>
+			<tr>
+			<tr th:each="contas: ${contas}">
+				<td><a th:text="${contas.login}">id</a></td>
+				<td><a class="btn btn-sm btn-info"
+					th:href="@{/usuarios/{id}/atualizar(id=${usuario.id})}">Editar</a>
+					<a class="btn btn-sm btn-danger"
+					th:href="@{/usuarios/{id}/remover(id=${usuario.id})}">Excluir</a></td>
+			</tr>
+
+
+		</table>
+
+	</div>
+	<a class="btn btn-success" href="/contas/cadastrar">Cadastrar</a>
+</body>
+</html>
